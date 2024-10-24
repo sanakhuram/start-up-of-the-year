@@ -532,13 +532,229 @@ function Ord(ordId, total, date) {
   this.ordId = ordId;
   this.total = total;
   this.date = date;
+  this.printReceipt = function () {
+    console.log(
+      `Receipt Id: ${this.ordId}, Date: ${this.total} Total: ${this.date}`
+    );
+  };
 }
 
 function CoffeeOrd(qty, ordId, total, date) {
   Ord.call(this, ordId, total, date); 
   this.qty = qty;
 }
+const myFirstCoffeeOrd = new CoffeeOrd(5,1, 190, "10-30-2023");
+	const mySecondCoffeeOrd = new CoffeeOrd(8,2, 70, "11-30-2023");
+	
+	console.log(myFirstCoffeeOrd);
+console.log(mySecondCoffeeOrd);
+  
+CoffeeOrd.prototype = Object.create(Order.prototype);
+  
+//--------------------Information Hiding with function construction-----------
 
-const coffeeOrd1 = new CoffeeOrd(8, 2, 120, "20-30-2023");
+function List(listId, total, date) {
+  this.listId = listId,
+    this.total = total,
+    this.date = date;
+}
+List.prototype.printReceipt = function () {
+  console.log(
+    `Receipt Id:${this.listId}, Date: ${this.date} Total:${this.total}`
+  );
+};
 
-console.log(coffeeOrd1);
+function CoffeeList(qty, listId, total, date) {
+  List.call(this, listId, total, date);
+  this.qty = qty;
+}
+
+CoffeeList.prototype = Object.create(List.prototype);
+CoffeeList.prototype.printCoffeeReceipt = function () {
+  console.log(
+    `Receipt Id:${this.listId}, Date: ${this.date} Total${this.total}`
+  );
+};
+
+const myFirstCoffeeList = new CoffeeList(5, 5, 5, "10-20-2024");
+const mySecondCoffeeList = new CoffeeList(6, 6, 6, "10-10-2025");
+
+console.log(myFirstCoffeeList);
+console.log(mySecondCoffeeList);
+
+	myFirstCoffeeList.printCoffeeReceipt();
+myFirstCoffeeList.printReceipt();
+ 
+//-----------------------IIFE----------------------🦁
+
+
+const lion = (function () {
+  let sound = "Roarrrr";
+  return {
+    speak: function () {
+      return `The Lion says ${sound}`;
+    },
+    setSound: function (newSound) {
+      sound = newSound;
+    },
+  };
+})();
+
+console.log(lion.sound);
+lion.setSound("Meow"); 
+
+//----------------💸--------------
+
+
+let balance = 0;
+
+const deposit = (amount) => {
+  balance += amount;
+};
+
+const withdraw = (amount) => {
+  balance -= amount;
+};
+
+const getBalance = () => {
+  return balance;
+};
+
+const bank = {
+  deposit,
+  withdraw,
+  getBalance,
+};
+
+const printBalance = () => {
+  console.log(`You now have ${bank.getBalance()} NOK in your account.`);
+};
+
+const handleDeposit = (amount) => {
+  bank.deposit(amount);
+  printBalance();
+};
+
+const handleWithdraw = (amount) => {
+  bank.withdraw(amount);
+  printBalance();
+};
+
+handleDeposit(100);  
+handleWithdraw(20);  
+
+
+//------------------Lesson Task---------------//
+
+/**
+ * @constructor
+ * @param {string} name - The name of the animal.
+ * @param {string} sound - The sound the animal makes.
+ */
+const Animal = (function () {
+  function Animal(name, sound) {
+    let _name = name;
+    let _sound = sound;
+
+    this.getName = function () {
+      return _name;
+    };
+
+    this.setName = function (newName) {
+      _name = newName;
+    };
+
+    this.getSound = function () {
+      return _sound;
+    };
+
+    this.setSound = function (newSound) {
+      _sound = newSound;
+    };
+  }
+
+  Animal.prototype.makeSound = function () {
+    console.log(this.getSound());
+  };
+
+  return Animal;
+})();
+
+const cat = new Animal('Cat', 'Meow');
+cat.makeSound();
+
+cat.setName('Tiger');
+cat.setSound('Roar');
+console.log(cat.getName());
+console.log(cat.getSound());
+
+//----------Adding Private Fields--------///
+
+
+const People = (function () {
+  function People(firstName, lastName) {
+    let _firstName = firstName;
+    let _lastName = lastName;
+
+    this.getFirstName = function () {
+      return _firstName;
+    };
+
+    this.setFirstName = function (newFirstName) {
+      _firstName = newFirstName;
+    };
+
+    this.getLastName = function () {
+      return _lastName;
+    };
+
+    this.setLastName = function (newLastName) {
+      _lastName = newLastName;
+    };
+  }
+
+  People.prototype.introduce = function () {
+    console.log(`Hello, I am ${this.getFirstName()} ${this.getLastName()}`);
+  };
+
+  return People;
+})();
+
+const people1 = new People('Lily', 'Thomas');
+people1.introduce();  
+
+people1.setFirstName('Nina');
+people1.setLastName('Anita');
+people1.introduce();  
+
+
+//---------------Create a Function Constructor---------------🚗🚗🚗🚗🚗🚗
+
+function Vehicle(make, model) {
+  this.make = make;
+  this.model = model;
+}
+Vehicle.prototype.getDetails = function () {
+  console.log(`Vehicle:${this.make} ${this.model}`);
+};
+
+const car = new Vehicle('Tesla', 'Jaguar');
+car.getDetails();
+
+function Car(make, model, numDoors) {
+  Vehicle.call(this, make, model);
+  this.numDoors = numDoors;
+}
+
+Car.prototype = Object.create(Vehicle.prototype);
+Car.prototype.constructor = Car;
+
+Car.prototype.getDetails = function () {
+  console.log(`Car: ${this.make} ${this.model}, , Doors:${this.numDoors}`);
+};
+
+const sedan= new Car('Honda', 'Accord', 4);
+sedan.getDetails();
+
+const genericVehicle = new Vehicle('Ford', 'Explorer');
+genericVehicle.getDetails();
