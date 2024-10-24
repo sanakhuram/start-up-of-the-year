@@ -488,3 +488,57 @@ employee1.introduce();
 const people = [human1, employee1];
 people.forEach(person => person.introduce());
 employee1.getJobDetails();
+
+
+
+//--------------function Constructor-------------
+
+
+function Menu(menuId, total, date) {
+  this.menuId = menuId,
+    this.total = total,
+    this.date = date
+}
+
+const myFirstOrder = new Menu(1, 190, "19-30-2023");
+const mySecondOrder = new Menu(2, 70, "11-30-2023");
+
+console.log(myFirstOrder.menuId);
+console.log(mySecondOrder.menuId);
+
+
+function Check(checkId, total, date) {
+  (this.checkId = checkId),
+    (this.total = total),
+    (this.date = date),
+    (Order.prototype.printReceipt = function () {
+      console.log(
+        `Receipt Id: ${this.checkId}, Date:${this.date} Total: ${this.total}`
+      );
+    });
+}
+
+const myFirstCheck = new Check(1, 190, "10.12.2024");
+const mySecondCheck = new Check(2, 70, "15-10-2024");
+
+console.log(myFirstCheck);
+console.log(mySecondCheck);
+
+
+//----------call function-------
+
+
+function Ord(ordId, total, date) {
+  this.ordId = ordId;
+  this.total = total;
+  this.date = date;
+}
+
+function CoffeeOrd(qty, ordId, total, date) {
+  Ord.call(this, ordId, total, date); 
+  this.qty = qty;
+}
+
+const coffeeOrd1 = new CoffeeOrd(8, 2, 120, "20-30-2023");
+
+console.log(coffeeOrd1);
