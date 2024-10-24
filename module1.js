@@ -758,3 +758,19 @@ sedan.getDetails();
 
 const genericVehicle = new Vehicle('Ford', 'Explorer');
 genericVehicle.getDetails();
+
+//-------------W3 school--------------
+
+function Family(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+const myFather = new Family("John", "Doe", 50, "blue");
+const myMother = new Family("Sally", "Rally", 48, "green");
+
+myFather.nationality = "English";
+
+console.log(myFather);
+console.log(myMother);
