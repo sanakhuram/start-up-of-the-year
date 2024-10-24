@@ -1,42 +1,100 @@
 body,
 html {
-	width: 100%;
-   height: 100%;
-   font-family: 'Shantell Sans', cursive;
-   background: url(startup.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-   background-size: cover;
+    width: 100%;
+    height: 100%;
+    font-family: 'Shantell Sans', cursive;
+    background: url(startup.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+.container {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-section {
+    background-color: rgb(105 129 151 / 95%);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 h1 {
-    font-size:3rem;
+    font-family: 'Tilt Neon', cursive;
+    font-size: 3rem;
     color: #e1b635;
     text-transform: uppercase;
-    text-align: center;
 }
 
 hr {
     border-color: #e1b635;
     border-width: 3px;
-    }
-    
-.buffer {
-    height: 10rem;
+    width: 50%;
+    margin: 20px auto;
 }
 
-.btn {
+p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.buffer {
+    height: 2rem;
+}
+
+.btn-xl {
+    padding: 1rem 2rem;
     font-weight: 700;
     border-radius: 300px;
     text-transform: uppercase;
+    font-size: 1.2rem;
 }
+
+
 .btn-primary {
     background-color: #d6b44e;
-    border-color: #d6b44e ;
+    border-color: #d6b44e;
+    color: #fff;
 }
-.btn-primary:hover{
+
+.btn-primary:hover {
     background-color: #d82cd5;
+    border-color: #d82cd5;
 }
-.btn-xl{
-    padding: 1rem 2rem;
+
+.btn-secondary {
+    background-color: #254c9b;
+    border-color: #555;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #192434;
+    border-color: #444;
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .btn-xl {
+        font-size: 1rem;
+        padding: 0.8rem 1.6rem;
+    }
+
+    hr {
+        width: 70%;
+    }
 }
