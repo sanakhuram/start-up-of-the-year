@@ -319,7 +319,7 @@ const bar = foo();
 console.log(bar.next()); 
 
 function* powers(n) {
-  //endless loop to generate
+
   for (let current = n; ; current *= n) {
     yield current;
   }
@@ -333,4 +333,127 @@ for (const power of powers(2)) {
   console.log(power);
 }
 
+//-----------------Regex---------------------------
 
+
+const regex = /^h.llo$/;
+const str1 = 'hello';
+const str2 = 'hallo';
+const str3 = 'hullo';
+
+console.log(regex.test(str1));
+console.log(regex.test(str2));
+console.log(regex.test(str3));
+console.log(regex.test('heello'));
+console.log(regex.test('hello!'));
+
+const regexAlt = /abc[\s\S]def/;
+
+console.log(regexAlt.test("abcXdef"));  
+console.log(regexAlt.test("abc-def"));  
+console.log(regexAlt.test("abcdeff")); 
+
+const regexItem = /[abc]/;
+console.log(regexItem.test('apple'));
+console.log(regexItem.test("banana"));
+console.log(regexItem.test("cherry"));
+console.log(regexItem.test("orange"));
+console.log(regexItem.test('sopp')); 
+
+
+const regexNum = /[a-z]/;
+console.log(regexNum.test('apple')); 
+console.log(regexNum.test('Banana'));
+console.log(regexNum.test('12345')); 
+
+const regexAlpha = /[a-zA-Z0-9]/;
+console.log(regexAlpha.test('apple'));
+console.log(regexAlpha.test("banana"));
+console.log(regexAlpha.test("45678"));
+console.log(regexAlpha.test("¤%&//()()"));
+
+const regexDigit = /\d/;
+console.log(regexDigit.test('1234'));
+console.log(regexDigit.test('abc'));
+
+const regexNonDigit = /\D/;
+console.log(regexNonDigit.test('123'));
+console.log(regexNonDigit.test('abc'));
+
+const regexWord = /\w/;
+console.log(regexWord.test('hello_world4567'));
+console.log(regexWord.test('#¤#%%#¤%¤#¤'));
+
+const regexWhiteSpace = /\s/;
+console.log(regexWhiteSpace.test('hello world'));
+console.log(regexWhiteSpace.test("helloworld"));
+
+
+const regexDot = /\./;
+console.log(regexDot.test('example.com'));
+
+const regexDollar = /\$/;
+console.log(regexDollar.test('Price: $100'));
+
+const regexParentheses = /\(.*\)/;
+console.log(regexParentheses.test("This is a (test) string."));
+
+	const regexComplex = /^\(.*\)$/;
+console.log(regexComplex.test("(This is a test)"));
+   console.log(regexComplex.test("This is a (test)"));
+  
+   const regexAsterisk = /\*/;
+
+console.log(regexAsterisk.test('apple*'));
+console.log(regexAsterisk.test('banana')); 
+console.log(regexAsterisk.test('*start'));  
+
+const regexCaretDollar = /^\^.*\$$/;
+
+console.log(regexCaretDollar.test("^hello$")); 
+console.log(regexCaretDollar.test("^something$")); 
+console.log(regexCaretDollar.test("normal string")); 
+console.log(regexCaretDollar.test("$start^"));
+
+//--------------------Quantifiers---------------------
+
+const regexStar = /a*/;
+console.log(regexStar.test('aaaa'));
+console.log(regexStar.test('b'));
+console.log(regexStar.test('abc'));
+
+
+const regexPlus= /a+/;
+console.log(regexPlus.test("aaaa"));
+console.log(regexPlus.test("b"));
+console.log(regexPlus.test("abc"));
+
+const regexQuestion= /a?/;
+console.log(regexQuestion.test("aaaa"));
+console.log(regexQuestion.test("b"));
+console.log(regexQuestion.test("abc"));
+
+const regexExact = /a{3}/;
+console.log(regexExact.test("aaaa"));
+console.log(regexExact.test("b"));
+console.log(regexExact.test("abc"));
+
+const regexLeast = /a{2,}/;
+console.log(regexLeast.test("aaaa"));
+console.log(regexLeast.test("b"));
+console.log(regexLeast.test("abc"));
+
+
+const regexRange= /a{2,4}/;
+console.log(regexRange.test("aaaa"));
+console.log(regexRange.test("b"));
+console.log(regexRange.test("abc"));
+
+
+const regexGreedy = /a{2,4}/;
+const str = 'aaaaa';
+console.log(str.match(regexGreedy));
+
+const regexLazy = /a{2,4}/;
+const strin = "aaaaa";
+console.log(str.match(regexLazy));
