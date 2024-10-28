@@ -100,9 +100,62 @@ p {
     .btn-xl {
         font-size: 1rem;
         padding: 0.8rem 1.6rem;
+        margin: 20px;
     }
 
-    hr {
-        width: 70%;
-    }
+}
+#icon-start, #icon-microtask, #icon-macrotask, #icon-end {
+  font-size: 2em;
+  margin: 15px;
+  display: inline-block;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Input field styling */
+.search-section {
+  margin: 30px 0;
+  text-align: left;
+}
+
+.search-section label {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+
+.buffer {
+  margin-top: 30px;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #cab428;
+}
+
+ul {
+  padding-left: 20px;
+  text-align: left;
+  list-style: circle;
+}
+
+li {
+  margin: 10px 0;
+  font-size: 1.1em;
 }

@@ -659,3 +659,243 @@ function printSquare(num) {
 
 printSquare(4);
 
+
+const moreEventsBtn = document.getElementById('more-events-btn');
+moreEventsBtn.addEventListener('click', function () {
+  console.log('More Events button clicked');
+  alert('Redirecting to the events page 🪄...');
+});
+
+
+const backHomeBtn = document.getElementById('back-home-btn');
+backHomeBtn.addEventListener('click', function () {
+  console.log('Back to Homepage button clicked');
+  alert('Going Back to the homepage 🏠');
+});
+
+
+window.addEventListener('load', function () {
+  console.log('Page fully loaded');
+  alert('Welcome to the Floral Design Event page 🪻');
+});
+
+
+const microtaskBtn = document.getElementById("microtask-demo");
+const iconStart = document.getElementById("icon-start");
+const iconMicrotask = document.getElementById("icon-microtask");
+const iconMacrotask = document.getElementById("icon-macrotask");
+const iconEnd = document.getElementById("icon-end");
+
+microtaskBtn.addEventListener("click", function () {
+  console.log("Microtask vs. Macrotask demonstration started");
+ iconStart.style.display = "inline-block";
+ iconMicrotask.style.display = "none";
+ iconMacrotask.style.display = "none";
+ iconEnd.style.display = "none";
+
+   iconStart.style.display = "inline-block";
+  console.log("Start");
+
+  setTimeout(() => {
+    console.log("Timeout callback (macrotask)");
+
+    iconMacrotask.style.display = "inline-block";
+    iconMicrotask.style.display = "none";
+    iconEnd.style.display = "inline-block"; 
+  }, 2000); // 2 second delay
+
+  Promise.resolve().then(() => {
+    console.log("Promise callback (microtask)");
+  });
+
+  console.log("End");
+});
+
+
+let timeoutId;
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', function (event) {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(() => {
+    console.log('Search query: ' + event.target.value);
+  }, 300);
+});
+
+
+Promise.race([
+  new Promise((resolve) => setTimeout(() => resolve("First"), 1000)),
+  new Promise((resolve) => setTimeout(() => resolve("Second"), 500)),
+]).then((value) => {
+  console.log(value); 
+});
+
+Promise.all([Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)]).then((values) => {
+  console.log(values);
+});
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+
+  enqueue(element) { 
+    this.items.push(element);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return 'Queue is empty';
+    }
+    return this.items.shift();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return 'Queue is empty';
+    }
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  printQueue() {
+    return this.items.toString();
+  }
+}
+
+const queue = new Queue();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+console.log(queue.printQueue()); 
+console.log(queue.dequeue());    
+console.log(queue.printQueue()); 
+
+
+class RateLimitedQueue {
+  constructor(limit, interval) {
+    this.limit = limit;
+    this.interval = interval;
+    this.queue = [];
+    this.currentCount = 0;
+  }
+
+  enqueue(task) {
+    this.queue.push(task);
+    this.processQueue();
+  }
+
+  processQueue() {
+    if (this.currentCount < this.limit && this.queue.length > 0) {
+      const task = this.queue.shift();
+      task();
+      this.currentCount++;
+
+      setTimeout(() => {
+        this.currentCount--;
+        this.processQueue();
+      }, this.interval);
+    }
+  }
+}
+
+const apiQueue = new RateLimitedQueue(2, 1000); 
+
+apiQueue.enqueue(() => console.log("API request 1"));
+apiQueue.enqueue(() => console.log("API request 2"));
+apiQueue.enqueue(() => console.log("API request 3"));
+
+function bfs(graph, start) {
+  let queue = [start];
+  let visited = new Set();
+
+  while (queue.length > 0) {
+    let node = queue.shift();
+
+    if (!visited.has(node)) {
+      console.log(node);
+      visited.add(node);
+
+      for (let neighbor of graph[node]) {
+        if (!visited.has(neighbor)) {
+          queue.push(neighbor);
+        }
+      }
+    }
+  }
+}
+
+const graph = {
+  A: ["B", "C"],
+  B: ["D", "E"],
+  C: ["F"],
+  D: [],
+  E: ["F"],
+  F: [],
+};
+
+bfs(graph, "A");
+
+
+const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+
+function fetchUserDetails() {
+  return new Promise((resolve) => {
+    console.log("Fetching user details...");
+    setTimeout(() => {
+      resolve({ id: 1, name: "Lily" });
+    }, 2000);
+  });
+}
+
+function fetchUserPosts() {
+  return fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((posts) => {
+      console.log("Fetched posts:", posts);
+      return posts.slice(0, 3);
+    })
+    .catch((error) => {
+      console.error("Error fetching posts:", error);
+      return [];
+    });
+}
+
+document
+  .getElementById("promise-all-demo")
+  .addEventListener("click", function () {
+    console.log("Button clicked!");
+
+    Promise.all([fetchUserDetails(), fetchUserPosts()]).then(
+      ([userDetails, userPosts]) => {
+        console.log("User details:", userDetails);
+        console.log("User posts:", userPosts);
+        document.getElementById(
+          "result"
+        ).innerText = `Name: ${userDetails.name}, Posts: ${userPosts.length}`;
+        displayPosts(userPosts);
+      }
+    );
+
+    console.log("End of click handler");
+  });
+
+function displayPosts(posts) {
+  const resultDiv = document.getElementById("result");
+  const postList = document.createElement("ul");
+
+  posts.forEach((post) => {
+    const postItem = document.createElement("li");
+    postItem.textContent = `Post ID: ${post.id}, Title: ${post.title}`;
+    postList.appendChild(postItem);
+  });
+
+  resultDiv.appendChild(postList);
+}

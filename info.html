@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./startup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>Floral Event Information</title>
 </head>
 <body>
@@ -16,11 +17,31 @@
       <p><strong>Location:</strong> Grand Garden Hall, New York</p>
       <p>Explore the latest trends in floral arrangements, meet fellow enthusiasts, and discover the beauty of flowers like never before.</p>
       <div class="buffer"></div>
+
+      <!-- Existing buttons -->
+      <button id="microtask-demo" class="btn btn-primary btn-xl">Microtask vs. Macrotask</button>
+      <button id="promise-all-demo" class="btn btn-primary btn-xl">Promise.all Demo</button>
+      <button id="error-handling-demo" class="btn btn-primary btn-xl">Error Handling Demo</button>
+      
+      <!-- Icons for Microtask Demo -->
+      <i id="icon-start" class="fas fa-play-circle" style="color:blue;"></i>
+      <i id="icon-microtask" class="fas fa-cog fa-spin" style="display:none; color:orange;"></i>
+      <i id="icon-macrotask" class="fas fa-stopwatch" style="display:none; color:rgb(255, 217, 0);"></i>
+      <i id="icon-end" class="fas fa-check-circle" style="display:none; color:green;"></i>
+
+      <!-- Result for Promises -->
+      <p id="result"></p>
+     
+      <div class="search-section">
+        <label for="searchInput">Search Input (Debounced):</label>
+        <input type="text" id="searchInput" class="search-input" placeholder="Type here...">
+      </div>
+
       <a href="./events.html">
-        <button class="btn btn-primary btn-xl">More Events</button>
+        <button id="more-events-btn" class="btn btn-primary btn-xl">More Events</button>
       </a>
       <a href="./index.html">
-        <button class="btn btn-secondary btn-xl">Back to Homepage</button>
+        <button id="back-home-btn" class="btn btn-secondary btn-xl">Back to Homepage</button>
       </a>
     </div>
   </div>
