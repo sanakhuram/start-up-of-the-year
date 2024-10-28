@@ -1,50 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./startup.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <title>Floral Event Information</title>
-</head>
-<body>
-  <div class="container">
-    <div class="info-section">
-      <h1>Floral Design Event</h1>
-      <hr>
-      <p>Join us for the annual Floral Design Event, where creativity blooms! This year's event showcases some of the most exquisite floral designs, featuring workshops, competitions, and exhibitions by top florists.</p>
-      <p><strong>Date:</strong> November 12, 2024</p>
-      <p><strong>Location:</strong> Grand Garden Hall, New York</p>
-      <p>Explore the latest trends in floral arrangements, meet fellow enthusiasts, and discover the beauty of flowers like never before.</p>
-      <div class="buffer"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./startup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>Floral Event Information</title>
+    <script src="./module2.js" defer></script>
+    <script src="./ThemedButton.js" defer></script>
+    <script src="./UserProfileCard.js" defer></script>
+    <style>
 
-      <!-- Existing buttons -->
-      <button id="microtask-demo" class="btn btn-primary btn-xl">Microtask vs. Macrotask</button>
-      <button id="promise-all-demo" class="btn btn-primary btn-xl">Promise.all Demo</button>
-      <button id="error-handling-demo" class="btn btn-primary btn-xl">Error Handling Demo</button>
-      
-      <!-- Icons for Microtask Demo -->
-      <i id="icon-start" class="fas fa-play-circle" style="color:blue;"></i>
-      <i id="icon-microtask" class="fas fa-cog fa-spin" style="display:none; color:orange;"></i>
-      <i id="icon-macrotask" class="fas fa-stopwatch" style="display:none; color:rgb(255, 217, 0);"></i>
-      <i id="icon-end" class="fas fa-check-circle" style="display:none; color:green;"></i>
+      .dark-theme {
+        --button-bg: #343a40;
+        --button-color: white;
+        --button-hover-bg: #23272b; 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="info-section">
+        <h1>Floral Design Event</h1>
+        <hr />
+        <p>
+          Join us for the annual Floral Design Event, where creativity blooms!
+          This year's event showcases some of the most exquisite floral designs,
+          featuring workshops, competitions, and exhibitions by top florists.
+        </p>
+        <p><strong>Date:</strong> November 12, 2024</p>
+        <p><strong>Location:</strong> Grand Garden Hall, New York</p>
+        <p>
+          Explore the latest trends in floral arrangements, meet fellow
+          enthusiasts, and discover the beauty of flowers like never before.
+        </p>
 
-      <!-- Result for Promises -->
-      <p id="result"></p>
-     
-      <div class="search-section">
-        <label for="searchInput">Search Input (Debounced):</label>
-        <input type="text" id="searchInput" class="search-input" placeholder="Type here...">
+        <my-greeting name="Visitor"></my-greeting>
+
+        <themed-button>Click Me</themed-button>
+
+        <themed-button class="dark-theme">Dark Mode Button</themed-button>
+
+        <user-profile-card>
+          <h2 slot="name">LILY 🌷</h2>
+          <p slot="bio">Professional Floral Designer from California</p>
+        </user-profile-card>
+
+        <div class="buffer"></div>
+
+        <button id="microtask-demo" class="btn btn-primary btn-xl">
+          Microtask vs. Macrotask
+        </button>
+        <button id="promise-all-demo" class="btn btn-primary btn-xl">
+          Promise.all Demo
+        </button>
+        <button id="error-handling-demo" class="btn btn-primary btn-xl">
+          Error Handling Demo
+        </button>
+
+        <i id="icon-start" class="fas fa-play-circle" style="color: rgb(32, 32, 164)"></i>
+        <i
+          id="icon-microtask"
+          class="fas fa-cog fa-spin"
+          style="display: none; color: orange"
+        ></i>
+        <i
+          id="icon-macrotask"
+          class="fas fa-stopwatch"
+          style="display: none; color: rgb(255, 217, 0)"
+        ></i>
+        <i
+          id="icon-end"
+          class="fas fa-check-circle"
+          style="display: none; color: green"
+        ></i>
+
+        <p id="result"></p>
+
+        <div class="search-section">
+          <label for="searchInput">Search Input (Debounced):</label>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Type here..."
+          />
+        </div>
+
+        <a href="./events.html">
+          <button id="more-events-btn" class="btn btn-primary btn-xl">
+            More Events
+          </button>
+        </a>
+        <a href="./index.html">
+          <button id="back-home-btn" class="btn btn-secondary btn-xl">
+            Back to Homepage
+          </button>
+        </a>
       </div>
-
-      <a href="./events.html">
-        <button id="more-events-btn" class="btn btn-primary btn-xl">More Events</button>
-      </a>
-      <a href="./index.html">
-        <button id="back-home-btn" class="btn btn-secondary btn-xl">Back to Homepage</button>
-      </a>
     </div>
-  </div>
-  <script src="./module2.js"></script>
-</body>
+  </body>
 </html>
