@@ -13,7 +13,7 @@ class ThemedButton extends HTMLElement {
           font-size: 16px;
         }
         button:hover {
-          background-color: var(--button-hover-bg, #0056b3); /* Darker blue */
+          background-color: var(--button-hover-bg, #0056b3); 
         }
       </style>
       <button><slot>Button</slot></button>

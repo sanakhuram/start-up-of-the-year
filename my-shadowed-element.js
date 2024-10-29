@@ -12,12 +12,12 @@ class MyShadowedElement extends HTMLElement {
           display: block;
           padding: 10px;
           margin: 10px 0;
-          background-color: #f9f9f9;
+          background-color: #8498a9;
           border: 1px solid #ddd;
           border-radius: 5px;
         }
         ::slotted(h2) {
-          color: darkblue;
+          color: #16202f;
         }
         ::slotted(p) {
           font-size: 16px;

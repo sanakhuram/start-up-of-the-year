@@ -5,10 +5,11 @@ class UserProfileCard extends HTMLElement {
       <style>
         :host {
           display: block;
-          border: 1px solid #ddd;
           padding: 20px;
           border-radius: 8px;
           max-width: 300px;
+          text-align:center;
+              margin: 0 auto;
         }
         ::slotted(h2) {
           color: #333;

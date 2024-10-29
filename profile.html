@@ -3,20 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shadow DOM Example</title>
+    <title>Shadow DOM Example with Login/Register</title>
     <script src="my-greeting.js" defer></script>
     <script src="my-shadowed-element.js" defer></script>
+    <script src="login-register.js" defer></script>
     <link rel="stylesheet" href="./startup.css">
   </head>
   <body>
     
+    <nav>
+      <a href="#" id="login-link">Login</a> |
+      <a href="#" id="register-link">Register</a>
+      <a href="index.html" id="home-link">Go Home</a> 
+    </nav>
+    
     <my-greeting name="Web Learner"></my-greeting>
-
    
     <my-shadowed-element>
       <h2 slot="header">Custom Header for the Shadow DOM</h2>
       <p>This is the main content inside the shadow DOM.</p>
       <div slot="footer">Custom Footer</div>
     </my-shadowed-element>
+
+    <!-- Login/Register Modals -->
+    <div id="login-modal" class="modal" style="display:none;">
+      <login-component></login-component>
+    </div>
+
+    <div id="register-modal" class="modal" style="display:none;">
+      <register-component></register-component>
+    </div>
+    
   </body>
 </html>
+
