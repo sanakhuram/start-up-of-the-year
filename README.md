@@ -2,6 +2,8 @@
 # Live Demo
 https://sanakhuram.github.io/start-up-of-the-year/index.html
 
+-** use inspect 
+
 # JavaScript 2 (JS2) Practice Modules
 
 This repository is dedicated to practicing **JavaScript 2** concepts through various modules. It includes exercises and examples from multiple modules to strengthen understanding.
