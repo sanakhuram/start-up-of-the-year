@@ -41,6 +41,9 @@ h1 {
     font-family: 'Tilt Neon', cursive;
     font-size: 3rem;
     color: #e1b635;
+    border: 2px solid #192434;
+    background :rgba(105, 129, 151, 0.95) ;
+    border-radius: 20px;
     text-transform: uppercase;
     margin-bottom: 15px;
 }
