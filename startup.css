@@ -24,6 +24,7 @@ html {
     align-items: center;
     padding: 20px;
     flex-direction: column;
+    background-color: red;
 }
 
 .info-section {
